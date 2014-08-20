@@ -1,4 +1,6 @@
 class MessagesController < ApplicationController
+  before_filter :authenticate, only: [:recent, :wall]
+
   protect_from_forgery only: [:null_session]
 
   def recent
@@ -48,5 +50,12 @@ class MessagesController < ApplicationController
   private
   def post_params
     params.require(:message).permit(:message_id, :content, :remark_name, :avatar_url)
+  end
+
+  def authenticate
+    token = session[:token] || params[:token]
+    if token != Rails.application.secrets.auth_token
+      render json: {status: 9}
+    end
   end
 end
