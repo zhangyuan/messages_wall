@@ -1,0 +1,14 @@
+h1 Messags
+
+table
+  thead
+    tr
+      th Avatar
+      th Remark Name
+      th Content
+  tbody
+    - @messages.each do |message|
+      tr
+        td= image_tag message.avatar_url, class: 'avatar'
+        td= message.remark_name
+        td= message.content
