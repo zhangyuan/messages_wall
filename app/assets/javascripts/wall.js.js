@@ -24,7 +24,7 @@
             return $(this).addClass('text-small');
           }
         });
-        return setTimeout(reload, 10);
+        return setTimeout(reload, 5000);
       });
     };
     refresh = function(start) {

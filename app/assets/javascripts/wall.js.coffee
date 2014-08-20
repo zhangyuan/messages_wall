@@ -20,7 +20,7 @@ $(document).ready ->
 					$(this).addClass 'text-medium'
 				else
 					$(this).addClass 'text-small'
-			setTimeout reload, 10
+			setTimeout reload, 5000
 		
 	refresh = (start)->
 		total = recent_messages.length
