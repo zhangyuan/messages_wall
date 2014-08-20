@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-  before_filter :authenticate, only: [:recent, :wall]
+  before_filter :authenticate
 
   protect_from_forgery only: [:null_session]
 
