@@ -44,3 +44,7 @@ gem 'capistrano', '~> 2.0', require: false
 gem 'compass-rails'
 gem 'puma'
 gem 'therubyracer',  platforms: :ruby
+
+group :production do
+  gem 'newrelic_rpm'
+end
