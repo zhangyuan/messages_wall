@@ -7,24 +7,26 @@
   }
 
   $(document).ready(function() {
-    var current, recent_messages, refresh, reload;
+    var current, recent_messages, refresh, reload, updateClass;
     current = [];
     recent_messages = [];
     reload = function() {
       return $.get('/messages/recent', function(data) {
         recent_messages = data.messages;
-        $(".message-box .content").each(function() {
-          var length;
-          length = $(this).text().trim().length;
-          if (length < 10) {
-            return $(this).addClass('text-large');
-          } else if (length > 10 && length < 40) {
-            return $(this).addClass('text-medium');
-          } else {
-            return $(this).addClass('text-small');
-          }
-        });
-        return setTimeout(reload, 5000);
+        return setTimeout(reload, 8000);
+      });
+    };
+    updateClass = function() {
+      return $(".message-box .content").each(function() {
+        var length;
+        length = $(this).text().trim().length;
+        if (length < 10) {
+          return $(this).addClass('text-large');
+        } else if (length > 10 && length < 40) {
+          return $(this).addClass('text-medium');
+        } else {
+          return $(this).addClass('text-small');
+        }
       });
     };
     refresh = function(start) {
@@ -40,7 +42,8 @@
       }
       way.set("messages", current);
       return setTimeout(function() {
-        return refresh(start);
+        refresh(start);
+        return updateClass();
       }, 3000);
     };
     reload();

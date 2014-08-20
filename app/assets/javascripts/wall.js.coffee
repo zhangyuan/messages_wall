@@ -11,8 +11,10 @@ $(document).ready ->
 	reload = ->
 		$.get '/messages/recent', (data) ->
 			recent_messages = data.messages
-			
-			$(".message-box .content").each ->
+			setTimeout reload, 8000
+	
+	updateClass = ->
+		$(".message-box .content").each ->
 				length = $(this).text().trim().length
 				if length < 10
 					$(this).addClass 'text-large'
@@ -20,8 +22,7 @@ $(document).ready ->
 					$(this).addClass 'text-medium'
 				else
 					$(this).addClass 'text-small'
-			setTimeout reload, 5000
-		
+
 	refresh = (start)->
 		total = recent_messages.length
 		console.log "start:" + start + " total: " + total
@@ -36,6 +37,7 @@ $(document).ready ->
 
 		setTimeout ->
 			refresh start
+			updateClass()
 		, 3000
 
 	reload()
