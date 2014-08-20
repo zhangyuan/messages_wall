@@ -1,6 +1,15 @@
 class MessagesController < ApplicationController
   protect_from_forgery only: [:null_session]
 
+  def recent
+    messages = Message.order("id desc").page(params[:page]).per(10)
+    render json: {messages: messages}
+  end
+
+  def wall
+    render layout: 'wall'
+  end
+
   def batch
     messages = Message.where(message_id: params[:ids])
     response.headers['Access-Control-Allow-Origin'] = '*'
@@ -33,7 +42,7 @@ class MessagesController < ApplicationController
   end
 
   def index
-    @messages = Message.page(params[:page]).per(30)    
+    @messages = Message.page(params[:page]).per(30)
   end
 
   private

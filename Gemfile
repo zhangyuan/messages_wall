@@ -40,3 +40,4 @@ gem 'spring',        group: :development
 
 gem 'slim-rails'
 gem 'kaminari'
+gem 'compass-rails'

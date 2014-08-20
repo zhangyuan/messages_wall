@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   resources :messages, only: [:create, :destroy, :index] do
     collection do
+      get :recent
       post :batch
+      get :wall
     end
   end
 
