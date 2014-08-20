@@ -40,4 +40,7 @@ gem 'spring',        group: :development
 
 gem 'slim-rails'
 gem 'kaminari'
+gem 'capistrano', '~> 2.0', require: false
 gem 'compass-rails'
+gem 'puma'
+gem 'therubyracer',  platforms: :ruby
