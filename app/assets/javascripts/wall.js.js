@@ -13,7 +13,7 @@
     reload = function() {
       return $.get('/messages/recent', function(data) {
         recent_messages = data.messages;
-        return setTimeout(reload, 8000);
+        return setTimeout(reload, 20000);
       });
     };
     updateClass = function() {
@@ -44,7 +44,7 @@
       return setTimeout(function() {
         refresh(start);
         return updateClass();
-      }, 3000);
+      }, 2000);
     };
     reload();
     return refresh(0);

@@ -4,7 +4,7 @@ class MessagesController < ApplicationController
   protect_from_forgery only: [:null_session]
 
   def recent
-    messages = Message.order("id desc").page(params[:page]).per(10)
+    messages = Message.order("id desc").page(params[:page]).per(100)
     render json: {messages: messages}
   end
 
