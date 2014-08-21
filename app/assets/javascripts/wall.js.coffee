@@ -28,7 +28,7 @@ $(document).ready ->
 		console.log "start:" + start + " total: " + total
 		if start < total
 			current = recent_messages[start...(start + 4)]
-			start += 4 
+			start += 1
 		else
 			current = recent_messages[0...4]
 			start = 0

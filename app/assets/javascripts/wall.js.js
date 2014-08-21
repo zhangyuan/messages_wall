@@ -13,7 +13,7 @@
     reload = function() {
       return $.get('/messages/recent', function(data) {
         recent_messages = data.messages;
-        return setTimeout(reload, 15000);
+        return setTimeout(reload, 20000);
       });
     };
     updateClass = function() {
@@ -35,7 +35,7 @@
       console.log("start:" + start + " total: " + total);
       if (start < total) {
         current = recent_messages.slice(start, start + 4);
-        start += 4;
+        start += 1;
       } else {
         current = recent_messages.slice(0, 4);
         start = 0;
