@@ -1,5 +1,6 @@
 class MessagesController < ApplicationController
-  before_filter :authenticate
+  # TODO: nedd authenticate
+  # before_filter :authenticate
 
   protect_from_forgery only: [:null_session]
 
