@@ -11,7 +11,7 @@ $(document).ready ->
 	reload = ->
 		$.get '/messages/recent', (data) ->
 			recent_messages = data.messages
-			setTimeout reload, 8000
+			setTimeout reload, 20000
 	
 	updateClass = ->
 		$(".message-box .content").each ->
@@ -38,7 +38,7 @@ $(document).ready ->
 		setTimeout ->
 			refresh start
 			updateClass()
-		, 3000
+		, 2000
 
 	reload()
 	refresh(0)
