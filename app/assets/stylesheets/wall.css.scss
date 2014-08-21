@@ -1,67 +1,219 @@
 //= require normalize
 
-@import "compass";
+@import "compass/reset";
+@import "compass/css3";
+@import "compass/typography";
+@import "compass/layout";
+@import "compass/utilities";
 
-body {
-	background-image: image-url('restaurant_icons.png');
-	background-repeat: repeat;
-	text-align: center;
+.clear, .clearfix {
+  @include clearfix();
+}
+.left {
+  @include float-left();
+}
+.right {
+  @include float-right();
+}
+.hide {
+  display: none;
 }
 
-
-.message-box {
-	text-align: left;
-	width: 800px;
-	margin: 0 auto;
-	background-color: white;
-	.left {
-		
-		width: 100px;
-		float: left;
-		img {
-			width: 100px;
-			height: 100px;
-		}
-	}
-
-	.right { 
-		width: 700px;
-		float: left;
-		overflow: hidden;
-
-		.remark_name {
-			font-weight: bold;
-		}
-		.content {
-			margin-top: 10px;
-		}
-		.remark_name, .content {
-			margin-left: 10px;
-		}
-	}
-
-	.text-large {
-		font-size: 70px;
-		overflow: hidden;
-	}
-	.text-medium {
-		font-size: 35px;
-		overflow: hidden;
-		height: 80px;
-	}
-
-	.text-small {
-		font-size: 20px;
-		height: 70px;
-		overflow: hidden;
-	}
-
-	padding: 10px;
-	@include border-radius(5px);
-	clear: both;
+a:link, a:visited {
+  text-decoration: none;
 }
 
-.clear {
-	clear: both;
-	@include clearfix;
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+  background-color: #fff;
+}
+::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 4px;
+  background-color: #ccc;
+  height: 10px;
+}
+
+.cont-box, .user-name, .cont-box a {
+  color: #124f8a;
+}
+
+#wrap {
+  position: relative;
+  width: 100%;
+  min-width: 1014px;
+  /* min-height: 768px; */
+  height: 900px;
+  overflow: hidden;
+  background: #030b22 image-url('bg.jpg') center 0 no-repeat;
+}
+
+#whole {
+  width: 910px;
+  height: auto;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+#header {
+  padding-top: 25px;
+  .logo-t {
+    display: block;
+    height: 96px;
+    width: 220px;
+    img {
+      max-width: 220px;
+      max-height: 96px;
+      position: relative;
+      width: 210px;
+      height: 52px;
+      left: 5px;
+      top: 22px;
+    }
+  }
+  .word-scroll {
+    width: 580px;
+    height: 96px;
+    background: image-url('sc_bg.png') center 0 no-repeat;
+    .scrollbox {
+      width: 440px;
+      .word-list {
+        width: 440px;
+        height: 96px;
+        position: relative;
+        li {
+          width: 100%;
+          height: 84px;
+          padding-top: 10px;
+          text-align: center;
+          position: absolute;
+          overflow: hidden;
+          line-height: 38px;
+          color: #fff;
+          &.on {
+            font-size: 46px;
+            line-height: 86px;
+            display: list-item;
+          }
+        }
+      }
+    }
+    .num-t {
+      padding: 14px 15px;
+      height: 67px;
+      width: 106px;
+      text-align: center;
+      background: image-url('top_line.png') left center no-repeat;
+      p {
+        text-align: center;
+        line-height: 35px;
+        em {
+          display: block;
+          font-size: 24px;
+        }
+        span {
+          font-size: 18px;
+        }
+      }
+    }
+  }
+  .reserved {
+    width: 96px;
+    height: 96px;
+    cursor: pointer;
+    text-align: right;
+    img {
+      max-width: 126px;
+      max-height: 96px;
+    }
+  }
+}
+
+#container {
+  width: 910px;
+  height: 555px;
+  overflow: hidden;
+  .con-inner {
+    margin-top: 15px;
+    .user-list {
+      li {
+        opacity: 0.9;
+        &.t-row {
+          display: block;
+          height: 166px;
+          margin-bottom: 15px;
+          opacity: 0.9;
+          border: 1px solid #237f7e;
+          background: -webkit-linear-gradient(250deg, #eef4fd , #fdfefc 25%);
+          border-radius: 3px;
+          position: relative;
+
+          .userimg {
+            position: relative;
+            margin: 35px 0 0 40px;
+            .head {
+              display: inline-block;
+              width: 90px;
+              height: 90px;
+              border: 2px solid #fff;
+            }
+          }
+
+          .cont-box {
+            padding-top: 20px;
+            width: 720px;
+            overflow: hidden;
+            margin-left: 25px;
+            position: relative;
+            max-height: 135px;
+            .c-word {
+              min-height: 100px;
+              .user-name {
+                font-size: 30px;
+                display: inline-block;
+                width: 690px;
+                height: 38px;
+                line-height: 38px;
+                overflow: hidden;
+              }
+              .cont {
+                display: block;
+                word-break: break-all;
+                word-wrap: break-word;
+                max-height: 100px;
+                overflow: hidden;
+              }
+            }
+          }
+
+          .btn-detail {
+            width: 70px;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: 2;
+            cursor: pointer;
+            display: none;
+            .btn-style {
+              width: 100%;
+              height: 100%;
+              background: image-url('curr-bg.png') 0 0 repeat-y;
+              background-position: 0 -320px;
+              .icon-arrow {
+                display: inline-block;
+                width: 16px;
+                height: 31px;
+                background: image-url('curr-arrow.png') 0 0 no-repeat;
+                position: absolute;
+                top: 41%;
+                right: 20px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }
