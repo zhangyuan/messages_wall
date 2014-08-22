@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root to: "messages#wall"
   resources :messages, only: [:create, :destroy, :index] do
     collection do
       get :recent
