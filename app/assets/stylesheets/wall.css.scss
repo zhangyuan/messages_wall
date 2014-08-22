@@ -3,63 +3,94 @@
 @import "compass";
 
 body {
-	background-image: image-url('restaurant_icons.png');
-	background-repeat: repeat;
+	// background-image: image-url('restaurant_icons.png');
+	background-image: image-url('wall.jpg');
+	// background-repeat: repeat;
 	text-align: center;
 }
 
+.sidebar {
+	.qrcode {
+		position: absolute;
+		bottom: 0px;
+		right: 0px;
+		width: 290px;
 
-.message-box {
-	text-align: left;
-	width: 800px;
-	margin: 0 auto;
-	background-color: white;
-	.left {
-		
-		width: 100px;
-		float: left;
 		img {
-			width: 100px;
-			height: 100px;
+			width: 100%;
 		}
 	}
-
-	.right { 
-		width: 700px;
-		float: left;
-		overflow: hidden;
-
-		.remark_name {
-			font-weight: bold;
-		}
-		.content {
-			margin-top: 10px;
-		}
-		.remark_name, .content {
-			margin-left: 10px;
-		}
-	}
-
-	.text-large {
-		font-size: 70px;
-		overflow: hidden;
-	}
-	.text-medium {
-		font-size: 35px;
-		overflow: hidden;
-		height: 80px;
-	}
-
-	.text-small {
-		font-size: 20px;
-		height: 70px;
-		overflow: hidden;
-	}
-
-	padding: 10px;
-	@include border-radius(5px);
-	clear: both;
 }
+
+.page-header {
+	.logo {
+		position: absolute;
+		top: 0px;
+		img {
+			width: 400px;
+		}
+	}
+	h1 {
+		color: white;
+	}
+}
+
+.messages {
+	margin-top: 50px;
+	.message-box {
+		text-align: left;
+		width: 800px;
+		margin: 0 auto;
+		background-color: #eee;
+		@include opacity(0.9);
+		.left {
+			
+			width: 100px;
+			float: left;
+			img {
+				width: 100px;
+				height: 100px;
+			}
+		}
+
+		.right { 
+			width: 700px;
+			float: left;
+			overflow: hidden;
+
+			.remark_name {
+				font-weight: bold;
+			}
+			.content {
+				margin-top: 10px;
+			}
+			.remark_name, .content {
+				margin-left: 10px;
+			}
+		}
+
+		.text-large {
+			font-size: 70px;
+			overflow: hidden;
+		}
+		.text-medium {
+			font-size: 35px;
+			overflow: hidden;
+			height: 80px;
+		}
+
+		.text-small {
+			font-size: 20px;
+			height: 70px;
+			overflow: hidden;
+		}
+
+		padding: 10px;
+		@include border-radius(5px);
+		clear: both;
+	}
+}
+
 
 .clear {
 	clear: both;

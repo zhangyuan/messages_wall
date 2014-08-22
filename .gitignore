@@ -33,3 +33,4 @@ db/schema.rb
 public/assets/
 
 config/nginx.conf
+.DS_Store

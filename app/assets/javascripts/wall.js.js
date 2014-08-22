@@ -7,9 +7,10 @@
   }
 
   $(document).ready(function() {
-    var current, recent_messages, refresh, reload, updateClass;
+    var current, recent_messages, refresh, reload, size, updateClass;
     current = [];
     recent_messages = [];
+    size = 5;
     reload = function() {
       return $.get('/messages/recent', function(data) {
         recent_messages = data.messages;
@@ -34,17 +35,19 @@
       total = recent_messages.length;
       console.log("start:" + start + " total: " + total);
       if (start < total) {
-        current = recent_messages.slice(start, start + 4);
-        start += 1;
+        current = recent_messages.slice(start, start + size);
+        start += size;
       } else {
-        current = recent_messages.slice(0, 4);
+        current = recent_messages.slice(0, size);
         start = 0;
       }
       way.set("messages", current);
       return setTimeout(function() {
+        $(".message-box").fadeOut('slow');
         refresh(start);
+        $(".message-box").fadeIn('slow');
         return updateClass();
-      }, 2000);
+      }, 3000);
     };
     reload();
     return refresh(0);

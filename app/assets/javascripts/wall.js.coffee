@@ -7,6 +7,7 @@ unless String::trim then String::trim = -> @replace /^\s+|\s+$/g, ""
 $(document).ready ->
 	current = []
 	recent_messages = []
+	size = 5
 
 	reload = ->
 		$.get '/messages/recent', (data) ->
@@ -27,18 +28,20 @@ $(document).ready ->
 		total = recent_messages.length
 		console.log "start:" + start + " total: " + total
 		if start < total
-			current = recent_messages[start...(start + 4)]
-			start += 1
+			current = recent_messages[start...(start + size)]
+			start += size
 		else
-			current = recent_messages[0...4]
+			current = recent_messages[0...size]
 			start = 0
 
 		way.set "messages", current
 
 		setTimeout ->
+			$(".message-box").fadeOut('slow')
 			refresh start
+			$(".message-box").fadeIn('slow')
 			updateClass()
-		, 2000
+		, 3000
 
 	reload()
 	refresh(0)
