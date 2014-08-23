@@ -26,22 +26,24 @@ body {
 	.logo {
 		position: absolute;
 		top: 0px;
+		right: 0px;
 		img {
 			width: 400px;
 		}
 	}
 	h1 {
-		color: white;
+		color: black;
+		font-size: 60px;
 	}
 }
 
 .messages {
-	margin-top: 50px;
+
 	.message-box {
 		text-align: left;
 		width: 800px;
 		margin: 0 auto;
-		background-color: #eee;
+		background-color: #fbe0ce;
 		@include opacity(0.9);
 		.left {
 			
