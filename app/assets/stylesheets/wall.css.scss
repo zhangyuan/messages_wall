@@ -14,7 +14,7 @@ body {
 		position: absolute;
 		bottom: 0px;
 		right: 0px;
-		width: 230px;
+		width: 320px;
 
 		img {
 			width: 100%;
@@ -32,7 +32,7 @@ body {
 		}
 	}
 	h1 {
-		margin-left: 10px;
+		margin-left: 50px;
 		color: black;
 		font-size: 60px;
 	}
@@ -43,7 +43,7 @@ body {
 	.message-box {
 		text-align: left;
 		width: 800px;
-		margin-left: 20px;
+		margin-left: 50px;
 		background-color: #fbe0ce;
 		@include opacity(0.9);
 		.left {
