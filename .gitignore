@@ -34,3 +34,5 @@ public/assets/
 
 config/nginx.conf
 .DS_Store
+Capfile
+config/deploy.rb
