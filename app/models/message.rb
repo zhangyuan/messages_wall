@@ -7,4 +7,13 @@ class Message < ActiveRecord::Base
       url
     end
   end
+
+  def avatar_data_url=(data)
+    file = Tempfile.new('avatar.png')
+    file.binmode
+    file = File.new("/tmp/a.png", "wb")
+    logger.debug(file.path)
+    file.write Base64.decode64(data)
+    file.close
+  end
 end
