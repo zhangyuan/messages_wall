@@ -9,6 +9,6 @@ table
   tbody
     - @messages.each do |message|
       tr
-        td= image_tag message.avatar_url, class: 'avatar'
+        td= image_tag message.original_avatar_url, class: 'avatar'
         td= message.remark_name
         td= message.content

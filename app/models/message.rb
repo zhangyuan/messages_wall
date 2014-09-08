@@ -1,6 +1,7 @@
 class Message < ActiveRecord::Base
-  def avatar_url
-    url = read_attribute(:avatar_url)
+  def original_avatar_url
+    url = read_attribute(:original_avatar_url)
+    return "" if url.blank?
     unless url.start_with?("http") 
       "https://mp.weixin.qq.com#{url}"
     else 
