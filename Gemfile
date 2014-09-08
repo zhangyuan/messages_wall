@@ -48,3 +48,6 @@ gem 'therubyracer',  platforms: :ruby
 group :production do
   gem 'newrelic_rpm'
 end
+
+gem 'carrierwave'
+gem 'mini_magick'

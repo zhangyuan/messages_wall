@@ -1,4 +1,6 @@
 class Message < ActiveRecord::Base
+  mount_uploader :avatar, MessageAvatarUploader
+
   def original_avatar_url
     url = read_attribute(:original_avatar_url)
     return "" if url.blank?
@@ -13,8 +15,17 @@ class Message < ActiveRecord::Base
     file = Tempfile.new('avatar.png')
     file.binmode
     file = File.new("/tmp/a.png", "wb")
-    logger.debug(file.path)
     file.write Base64.decode64(data)
+    
+    self.avatar = file
     file.close
+  end
+
+  def display_avatar_url
+    if avatar_url.present?
+      avatar_url
+    else
+      original_avatar_url
+    end
   end
 end
