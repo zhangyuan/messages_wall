@@ -1,0 +1,17 @@
+= form_for wall, html: {role: "form"} do |f| 
+  .form-group
+    label 名称
+    = f.text_field :title, class: 'form-control'
+  .form-group
+    label 背景图片
+    = f.file_field :background_image, class: 'form-control'
+  .form-group
+    label 二维码图片
+    = f.file_field :qrcode, class: 'form-control'
+  .form-group
+    label LOGO
+    = f.file_field :logo, class: 'form-control'
+
+  .form-group
+    = f.submit "提交", class: "btn btn-default"
+  

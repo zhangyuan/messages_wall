@@ -1,0 +1,24 @@
+.page-header
+  .logo
+    img way-data="wall.logo_url"
+  h1 way-data="wall.title"
+
+.sidebar
+  .qrcode
+    img way-data="wall.qrcode_url"
+
+.messages
+  .message-box way-repeat="messages"
+    .left
+      img way-data="display_avatar_url"
+    .right
+      .remark_name way-data="remark_name"
+      .content way-data="content"
+    .clear
+
+
+javascript:
+  $(document).ready(function(){
+    window.main.initialize(#{@wall.id})
+  });
+

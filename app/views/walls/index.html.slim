@@ -1,0 +1,12 @@
+.page-header
+  h1 Walls
+
+
+table.table.table-hover
+  thead
+    tr
+      th 标题
+  tbody
+    - @walls.each do |wall|
+      tr
+        td= link_to wall.title, wall_path(wall)
