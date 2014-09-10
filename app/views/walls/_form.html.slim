@@ -11,6 +11,9 @@
   .form-group
     label LOGO
     = f.file_field :logo, class: 'form-control'
+  .form-group
+    label 上墙时长
+    = f.text_field :duration, class: 'form-control'
 
   .form-group
     = f.submit "提交", class: "btn btn-default"

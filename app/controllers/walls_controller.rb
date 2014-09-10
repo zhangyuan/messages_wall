@@ -18,7 +18,11 @@ class WallsController < ApplicationController
 
   def show
     @wall = Wall.find(params[:id])
-    @messages = Message.all
+    if @wall.duration > 0
+      @messages = Message.where("created_at > ?", @wall.duration.minutes.ago)
+    else
+      @messages = Message.all
+    end
     render layout: 'wall'
   end
 
@@ -37,6 +41,6 @@ class WallsController < ApplicationController
 
   private 
   def post_params
-    params.require(:wall).permit(:title, :background_image, :qrcode, :logo)
+    params.require(:wall).permit(:title, :background_image, :qrcode, :logo, :duration)
   end
 end
