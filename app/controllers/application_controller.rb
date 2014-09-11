@@ -9,4 +9,12 @@ class ApplicationController < ActionController::Base
       headers['Access-Control-Allow-Origin'] = '*'
     end
   end
+
+  def current_account
+    if defined?(@current_account) 
+      @current_account
+    else
+      @current_account = Staff.find_by(id: session[:account_id])
+    end 
+  end
 end

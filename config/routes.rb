@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :sessions, only: [:index, :create]
+  resources :sessions, only: [:new, :create]
 
   post "walls/retrieve/" => "walls#retrieve"
   resources :walls
