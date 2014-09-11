@@ -1,4 +1,7 @@
 class WallsController < ApplicationController
+  skip_before_action :verify_authenticity_token, only: [:retrieve]
+  cors_set_access_control_headers only: [:retrieve]
+
   def new
     @wall = Wall.new 
   end

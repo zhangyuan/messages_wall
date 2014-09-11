@@ -2,6 +2,7 @@ class MessagesController < ApplicationController
   before_filter :authenticate, except: [:wall, :recent]
 
   skip_before_action :verify_authenticity_token
+  cors_set_access_control_headers only: [:batch, :create, :destroy]
 
   def recent
     @messages = Message.order("id desc").page(params[:page]).per(100)
@@ -13,12 +14,10 @@ class MessagesController < ApplicationController
 
   def batch
     messages = Message.where(message_id: params[:ids])
-    response.headers['Access-Control-Allow-Origin'] = '*'
     render json: {messages: messages}
   end
 
   def create
-    response.headers['Access-Control-Allow-Origin'] = '*'
     message = Message.new(post_params)
     if message.save
       render json: {status: 0 }
@@ -53,7 +52,7 @@ class MessagesController < ApplicationController
 
   def authenticate
     token = session[:token] || params[:token]
-    if token != Rails.application.secrets.auth_token
+    unless wall = Wall.find_by(token: token)
       render json: {status: 9}
     end
   end

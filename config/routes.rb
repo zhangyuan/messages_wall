@@ -11,9 +11,10 @@ Rails.application.routes.draw do
 
   resources :sessions, only: [:index, :create]
 
+  post "walls/retrieve/" => "walls#retrieve"
   resources :walls
 
-  get "walls/retrieve/:token" => "walls#retrieve"
+#  match "walls/retrieve/", to: "walls#retrieve", via: [:options]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
