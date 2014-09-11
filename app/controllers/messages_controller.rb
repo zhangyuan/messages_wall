@@ -1,7 +1,7 @@
 class MessagesController < ApplicationController
   before_filter :authenticate, except: [:wall, :recent]
 
-  protect_from_forgery only: [:null_session]
+  skip_before_action :verify_authenticity_token
 
   def recent
     @messages = Message.order("id desc").page(params[:page]).per(100)

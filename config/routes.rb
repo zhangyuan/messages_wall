@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root to: "messages#wall"
+
   resources :messages, only: [:create, :destroy, :index] do
     collection do
       get :recent
@@ -8,7 +9,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :sessions, only: [:index]
+  resources :sessions, only: [:index, :create]
 
   resources :walls
 
