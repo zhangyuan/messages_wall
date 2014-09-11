@@ -14,7 +14,13 @@ class ApplicationController < ActionController::Base
     if defined?(@current_account) 
       @current_account
     else
-      @current_account = Staff.find_by(id: session[:account_id])
+      @current_account = Account.find_by(id: session[:account_id])
     end 
+  end
+
+  def self.require_signed_in(options = {})
+    before_filter(options) do
+      redirect_to new_session_path unless current_account
+    end
   end
 end

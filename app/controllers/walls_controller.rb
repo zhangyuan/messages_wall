@@ -2,12 +2,14 @@ class WallsController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:retrieve]
   cors_set_access_control_headers only: [:retrieve]
 
+  require_signed_in only: [:new, :create, :index, :edit, :update]
+
   def new
     @wall = Wall.new 
   end
 
   def create
-    @wall = Wall.new(post_params)
+    @wall = current_account.walls.new(post_params)
     if @wall.save
       redirect_to wall_path(@wall)
     else
@@ -16,7 +18,7 @@ class WallsController < ApplicationController
   end
 
   def index
-    @walls = Wall.page(params[:page]).per(100)
+    @walls = current_account.walls.page(params[:page]).per(100)
   end
 
   def retrieve
@@ -36,11 +38,11 @@ class WallsController < ApplicationController
   end
 
   def edit
-    @wall = Wall.find(params[:id])
+    @wall = current_account.walls.find(params[:id])
   end
 
   def update
-    @wall = Wall.find(params[:id])
+    @wall = current_account.walls.find(params[:id])
     if @wall.update_attributes(post_params)
       redirect_to wall_path(@wall)
     else
