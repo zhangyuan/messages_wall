@@ -32,7 +32,7 @@ class WallsController < ApplicationController
     if @wall.duration > 0
       @messages = @wall.messages.where("created_at > ?", @wall.duration.minutes.ago)
     else
-      @messages = @wall.messages.all
+      @messages = @wall.messages.limit(50)
     end
     render layout: 'wall'
   end
