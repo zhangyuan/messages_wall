@@ -23,4 +23,8 @@ class ApplicationController < ActionController::Base
       redirect_to new_session_path unless current_account
     end
   end
+
+  def set_page_title(title)
+    @page_title = title
+  end
 end

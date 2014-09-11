@@ -29,6 +29,7 @@ class WallsController < ApplicationController
 
   def show
     @wall = Wall.find(params[:id])
+    set_page_title @wall.title
     if @wall.duration > 0
       @messages = @wall.messages.where("created_at > ?", @wall.duration.minutes.ago)
     else
