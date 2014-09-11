@@ -18,7 +18,8 @@ window.main = {
       wall = data.wall
       way.set "wall", wall
       wall_id = id
-      $("body").css("background-image", "url(#{wall.background_image_url})")
+      if wall.background_image_url
+        $("body").css("background-image", "url(#{wall.background_image_url})")
       main.draw(0)
   draw: (start) ->
     current = wall.messages.slice(start, start + SIZE)
