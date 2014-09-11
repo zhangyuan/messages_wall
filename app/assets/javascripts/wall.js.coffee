@@ -9,7 +9,7 @@ SIZE = 5
 
 window.main = {
   initialize : (id)->
-    this.load(id)    
+    this.load(id)
   wall_url: (id) ->
     "/walls/#{id}.json"
 

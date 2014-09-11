@@ -5,6 +5,8 @@ class Wall < ActiveRecord::Base
   mount_uploader :qrcode, WallUploaderUploader
   mount_uploader :logo, WallUploaderUploader
 
+  has_many :messages
+
   before_create :generate_token
 
   def generate_token

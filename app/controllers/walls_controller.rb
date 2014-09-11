@@ -28,9 +28,9 @@ class WallsController < ApplicationController
   def show
     @wall = Wall.find(params[:id])
     if @wall.duration > 0
-      @messages = Message.where("created_at > ?", @wall.duration.minutes.ago)
+      @messages = @wall.messages.where("created_at > ?", @wall.duration.minutes.ago)
     else
-      @messages = Message.all
+      @messages = @wall.messages.all
     end
     render layout: 'wall'
   end

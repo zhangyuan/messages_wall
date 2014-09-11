@@ -13,12 +13,12 @@ class MessagesController < ApplicationController
   end
 
   def batch
-    messages = Message.where(message_id: params[:ids])
+    messages = current_wall.messages.where(message_id: params[:ids])
     render json: {messages: messages}
   end
 
   def create
-    message = Message.new(post_params)
+    message = current_wall.messages.new(post_params)
     if message.save
       render json: {status: 0 }
     else
@@ -28,7 +28,7 @@ class MessagesController < ApplicationController
 
   def destroy
     response.headers['Access-Control-Allow-Origin'] = '*'
-    message = Message.find_by_message_id(params[:id])
+    message = current_wall.messages.find_by(message_id: params[:id])
     
     if message.present?
       if message.destroy
@@ -51,9 +51,16 @@ class MessagesController < ApplicationController
   end
 
   def authenticate
-    token = session[:token] || params[:token]
-    unless wall = Wall.find_by(token: token)
-      render json: {status: 9}
+    unless current_wall
+      render json: {status: 10}
+    end
+  end
+
+  def current_wall
+    if defined?(@current_wall)
+      @current_wall
+    else
+      @current_wall = Wall.find_by(token: params[:token])
     end
   end
 end
