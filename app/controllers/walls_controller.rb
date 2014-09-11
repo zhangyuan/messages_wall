@@ -16,6 +16,12 @@ class WallsController < ApplicationController
     @walls = Wall.page(params[:page]).per(100)
   end
 
+  def retrieve
+    unless @wall = Wall.find_by(token: params[:token])
+      render json: {status: 1, msg: "Not Found"}
+    end
+  end
+
   def show
     @wall = Wall.find(params[:id])
     if @wall.duration > 0
