@@ -6,7 +6,11 @@ table.table.table-hover
   thead
     tr
       th 标题
+      th 密钥
   tbody
     - @walls.each do |wall|
       tr
         td= link_to wall.title, wall_path(wall)
+        td= wall.token
+
+= paginate @walls
