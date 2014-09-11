@@ -23,7 +23,12 @@ window.main = {
       main.draw(0)
   draw: (start) ->
     current = wall.messages.slice(start, start + SIZE)
-    if current.length > 0
+    if wall.messages.length == 0
+      way.set "messages", []
+      setTimeout ->
+        main.load(wall_id)
+      , 2000
+    else if current.length > 0
       way.set "messages", current
 
       setTimeout ->
