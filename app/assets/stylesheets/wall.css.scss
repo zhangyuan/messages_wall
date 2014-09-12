@@ -110,8 +110,9 @@ body {
 }
 
 .full_screen {
+  color: #B1B1B1;
   display: none;
-  @include opacity(0.1);
+  @include opacity(0.01);
   &:hover {
     @include opacity(0.8);
   }
