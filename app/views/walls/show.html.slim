@@ -15,10 +15,11 @@
       .remark_name way-data="remark_name"
       .content way-data="content"
     .clear
-
+.actions
+  = fa_icon "toggle-off 2x", id: 'enter_full_screen', class: 'full_screen'
+  = fa_icon "toggle-on 2x", id: 'exit_full_screen', class: 'full_screen'
 
 javascript:
   $(document).ready(function(){
     window.main.initialize(#{@wall.id})
   });
-

@@ -61,6 +61,8 @@ GEM
     diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.2.1)
+    font-awesome-rails (4.2.0.0)
+      railties (>= 3.2, < 5.0)
     fssm (0.2.10)
     highline (1.6.21)
     hike (1.2.3)
@@ -190,6 +192,7 @@ DEPENDENCIES
   carrierwave
   coffee-rails (~> 4.0.0)
   compass-rails
+  font-awesome-rails
   jbuilder (~> 2.0)
   jquery-rails
   kaminari

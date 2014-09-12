@@ -1,6 +1,7 @@
 #= require jquery
 #= require way.min
 #= require underscore-min
+#= require screenfull
 
 unless String::trim then String::trim = -> @replace /^\s+|\s+$/g, ""
 wall_id = null
@@ -82,3 +83,19 @@ window.main = {
 # 	reload()
 # 	refresh(0)
 		
+
+$(document).ready ->
+  if screenfull.isFullscreen
+    $("#exit_full_screen").show()
+  else
+    $("#enter_full_screen").show()
+
+  if screenfull.enabled
+    $("#enter_full_screen").click ->
+      screenfull.request()
+      $("#enter_full_screen").hide()
+      $("#exit_full_screen").show()
+    $("#exit_full_screen").click ->
+      screenfull.exit()
+      $("#exit_full_screen").hide()
+      $("#enter_full_screen").show()

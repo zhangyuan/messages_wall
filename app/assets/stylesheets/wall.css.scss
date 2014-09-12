@@ -1,12 +1,15 @@
 //= require normalize
 
 @import "compass";
+@import "font-awesome";
 
 body {
 	// background-image: image-url('restaurant_icons.png');
 	// background-image: image-url('wall.jpg');
 	// background-repeat: repeat;
 	// text-align: center;
+  height: 100%;
+  width: 100%;
 }
 
 .sidebar {
@@ -98,4 +101,18 @@ body {
 .clear {
 	clear: both;
 	@include clearfix;
+}
+
+.actions {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
+
+.full_screen {
+  display: none;
+  @include opacity(0.1);
+  &:hover {
+    @include opacity(0.8);
+  }
 }
