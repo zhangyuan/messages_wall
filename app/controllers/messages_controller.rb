@@ -13,7 +13,7 @@ class MessagesController < ApplicationController
   end
 
   def batch
-    messages = current_wall.messages.where(message_id: params[:ids])
+    messages = current_wall.messages.published.where(message_id: params[:ids])
     render json: {messages: messages}
   end
 
@@ -28,10 +28,10 @@ class MessagesController < ApplicationController
 
   def destroy
     response.headers['Access-Control-Allow-Origin'] = '*'
-    message = current_wall.messages.find_by(message_id: params[:id])
+    message = current_wall.messages.published.find_by(message_id: params[:id])
     
-    if message.present?
-      if message.destroy
+    if message
+      if message.soft_delete
         render json: {status: 0} 
       else
         render json: {status: 1}

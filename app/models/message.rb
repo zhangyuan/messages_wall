@@ -41,4 +41,9 @@ class Message < ActiveRecord::Base
       STATUS.at publishing_status_id
     end
   end
+
+  def soft_delete
+    self.publishing_status = "deleted" 
+    save
+  end
 end

@@ -30,10 +30,11 @@ class WallsController < ApplicationController
   def show
     @wall = Wall.find(params[:id])
     set_page_title @wall.title
+    messages = @wall.messages.published
     if @wall.duration > 0
-      @messages = @wall.messages.where("created_at > ?", @wall.duration.minutes.ago)
+      @messages = messages.where("created_at > ?", @wall.duration.minutes.ago)
     else
-      @messages = @wall.messages.limit(50)
+      @messages = messages.limit(50)
     end
     render layout: 'wall'
   end
