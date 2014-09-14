@@ -2,8 +2,11 @@ class Message < ActiveRecord::Base
   mount_uploader :avatar, MessageAvatarUploader
 
   STATUS = %w(published deleted)
+  TYPE = %w(normal sticky)
 
   scope :published, -> { where(publishing_status_id: STATUS.index('published')) }
+  scope :sticky, -> { where(message_type_id: TYPE.index('sticky'))}
+  scope :normal, -> { where(message_type_id: TYPE.index('normal'))}
 
   def original_avatar_url
     url = read_attribute(:original_avatar_url)
@@ -39,6 +42,16 @@ class Message < ActiveRecord::Base
   def publishing_status
     if publishing_status_id && publishing_status_id >= 0
       STATUS.at publishing_status_id
+    end
+  end
+
+  def message_type=(type)
+    self.message_type_id = TYPE.index(type) 
+  end
+
+  def message_type
+    if message_type_id && message_type_id >= 0 
+      TYPE.at message_type_id
     end
   end
 
