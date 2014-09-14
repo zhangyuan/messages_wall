@@ -4,10 +4,6 @@
 @import "font-awesome";
 
 body {
-	// background-image: image-url('restaurant_icons.png');
-	// background-image: image-url('wall.jpg');
-	// background-repeat: repeat;
-	// text-align: center;
   height: 100%;
   width: 100%;
 }
@@ -42,7 +38,6 @@ body {
 }
 
 .messages {
-
 	.message-box {
 		text-align: left;
 		width: 800px;
@@ -50,7 +45,6 @@ body {
 		background-color: #fbe0ce;
 		@include opacity(0.9);
 		.left {
-			
 			width: 100px;
 			float: left;
 			img {
@@ -91,6 +85,7 @@ body {
 			overflow: hidden;
 		}
 
+    margin-bottom: 10px;
 		padding: 10px;
 		@include border-radius(5px);
 		clear: both;
