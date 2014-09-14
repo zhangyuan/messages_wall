@@ -4,14 +4,6 @@ class MessagesController < ApplicationController
   skip_before_action :verify_authenticity_token
   cors_set_access_control_headers only: [:batch, :create, :destroy]
 
-  def recent
-    @messages = Message.order("id desc").page(params[:page]).per(100)
-  end
-
-  def wall
-    render layout: 'wall'
-  end
-
   def batch
     messages = current_wall.messages.published.where(message_id: params[:ids])
     render json: {messages: messages}

@@ -1,18 +1,17 @@
 Rails.application.routes.draw do
-  root to: "messages#wall"
-
   resources :messages, only: [:create, :destroy, :index] do
     collection do
-      get :recent
       post :batch
-      get :wall
     end
   end
 
   resources :sessions, only: [:new, :create]
 
-  post "walls/retrieve/" => "walls#retrieve"
-  resources :walls
+  resources :walls do
+    collection do
+      post "retrieve"
+    end
+  end
 
 #  match "walls/retrieve/", to: "walls#retrieve", via: [:options]
 
