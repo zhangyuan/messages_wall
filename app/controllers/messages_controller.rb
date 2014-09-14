@@ -47,7 +47,7 @@ class MessagesController < ApplicationController
 
   private
   def post_params
-    params.require(:message).permit(:message_id, :content, :remark_name, :original_avatar_url, :avatar_data_url)
+    params.require(:message).permit(:message_id, :content, :remark_name, :original_avatar_url, :avatar_data_url, :message_type)
   end
 
   def authenticate
