@@ -1,6 +1,7 @@
 .page-header
-  h1 Walls
+  h1 微信墙
 
+= link_to "创建", new_wall_path, class: 'btn btn-default'
 
 table.table.table-hover
   thead
@@ -10,7 +11,7 @@ table.table.table-hover
   tbody
     - @walls.each do |wall|
       tr
-        td= link_to wall.title, wall_path(wall)
+        td= link_to wall.title, wall_path(wall), target: "_blank"
         td= wall.token
 
 = paginate @walls
