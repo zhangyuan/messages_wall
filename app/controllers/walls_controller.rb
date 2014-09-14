@@ -11,14 +11,14 @@ class WallsController < ApplicationController
   def create
     @wall = current_account.walls.new(post_params)
     if @wall.save
-      redirect_to wall_path(@wall)
+      redirect_to walls_path
     else
       render :new
     end
   end
 
   def index
-    @walls = current_account.walls.page(params[:page]).per(100)
+    @walls = current_account.walls.order("id desc").page(params[:page]).per(100)
   end
 
   def retrieve
@@ -49,7 +49,7 @@ class WallsController < ApplicationController
   def update
     @wall = current_account.walls.find(params[:id])
     if @wall.update_attributes(post_params)
-      redirect_to wall_path(@wall)
+      redirect_to walls_path
     else
       render :edit
     end
