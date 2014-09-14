@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root to: "sessions#new"
   resources :messages, only: [:create, :destroy, :index] do
     collection do
       post :batch

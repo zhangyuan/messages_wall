@@ -3,6 +3,7 @@ class SessionsController < ApplicationController
   cors_set_access_control_headers
 
   def new
+    redirect_to walls_path if signed_in?
   end
 
   def create
