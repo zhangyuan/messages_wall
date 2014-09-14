@@ -59,4 +59,8 @@ class Message < ActiveRecord::Base
     self.publishing_status = "deleted" 
     save
   end
+
+  def published?
+    publishing_status == "published" 
+  end
 end
