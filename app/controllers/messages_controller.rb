@@ -10,8 +10,7 @@ class MessagesController < ApplicationController
   end
 
   def sticky
-    message = current_wall.messages.sticky.last
-    render json: {messages: message}
+    @messages = current_wall.messages.sticky.order("id desc").limit(1)
   end
 
   def create
@@ -24,7 +23,6 @@ class MessagesController < ApplicationController
   end
 
   def destroy
-    response.headers['Access-Control-Allow-Origin'] = '*'
     message = current_wall.messages.published.find_by(message_id: params[:id])
 
     if message
