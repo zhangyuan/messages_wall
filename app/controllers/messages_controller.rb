@@ -2,11 +2,16 @@ class MessagesController < ApplicationController
   before_filter :authenticate, except: [:wall, :recent]
 
   skip_before_action :verify_authenticity_token
-  cors_set_access_control_headers only: [:batch, :create, :destroy]
+  cors_set_access_control_headers only: [:batch, :create, :destroy, :sticky]
 
   def batch
     messages = current_wall.messages.published.where(message_id: params[:ids])
     render json: {messages: messages}
+  end
+
+  def sticky
+    message = current_wall.messages.sticky.last
+    render json: {messages: message}
   end
 
   def create
@@ -21,10 +26,10 @@ class MessagesController < ApplicationController
   def destroy
     response.headers['Access-Control-Allow-Origin'] = '*'
     message = current_wall.messages.published.find_by(message_id: params[:id])
-    
+
     if message
       if message.soft_delete
-        render json: {status: 0} 
+        render json: {status: 0}
       else
         render json: {status: 1}
       end

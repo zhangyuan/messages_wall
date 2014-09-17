@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :messages, only: [:create, :destroy, :index] do
     collection do
       post :batch
+      get :sticky
     end
   end
 
