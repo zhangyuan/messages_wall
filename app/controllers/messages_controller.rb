@@ -23,7 +23,7 @@ class MessagesController < ApplicationController
   end
 
   def destroy
-    message = current_wall.messages.published.find_by(message_id: params[:id])
+    message = current_wall.messages.published.where(message_id: params[:id]).last
 
     if message
       if message.soft_delete

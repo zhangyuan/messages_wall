@@ -55,6 +55,7 @@ gem 'bootstrap-sass', '~> 3.2.0'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0'
+  gem 'pry'
 end
 
 gem 'font-awesome-rails'
