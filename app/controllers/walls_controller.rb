@@ -5,7 +5,7 @@ class WallsController < ApplicationController
   require_signed_in only: [:new, :create, :index, :edit, :update]
 
   def new
-    @wall = Wall.new 
+    @wall = Wall.new
   end
 
   def create
@@ -31,7 +31,7 @@ class WallsController < ApplicationController
     @wall = Wall.find(params[:id])
     set_page_title @wall.title
     @messages = @wall.messages.published.normal
-    @sticky_messages = @wall.messages.sticky.limit(1)
+    @sticky_messages = @wall.messages.sticky.order("id desc").limit(1)
     if @wall.duration > 0
       @sticky_messages = @sticky_messages.where("created_at > ?", @wall.duration.minutes.ago)
       @messages = @messages.where("created_at > ?", @wall.duration.minutes.ago)
@@ -55,7 +55,7 @@ class WallsController < ApplicationController
     end
   end
 
-  private 
+  private
   def post_params
     params.require(:wall).permit(:title, :background_image, :qrcode, :logo, :duration)
   end
