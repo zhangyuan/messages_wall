@@ -26,7 +26,6 @@ window.main = {
 
       main.draw(0)
   draw: (start) ->
-    console.log("===>", start)
     normal = wall.messages
     sticky = wall.sticky_messages
     current = wall.messages.slice(start, start + per_page)
@@ -47,6 +46,8 @@ window.main = {
       setTimeout ->
         main.load(wall_id)
       , INTERVAL
+
+}
 
 $(document).ready ->
   if screenfull.isFullscreen
