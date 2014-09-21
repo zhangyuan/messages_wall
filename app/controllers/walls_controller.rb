@@ -57,6 +57,6 @@ class WallsController < ApplicationController
 
   private
   def post_params
-    params.require(:wall).permit(:title, :background_image, :qrcode, :logo, :duration)
+    params.require(:wall).permit(:title, :background_image, :qrcode, :logo, :duration, :message_color, :message_background_color)
   end
 end

@@ -37,6 +37,11 @@ window.main = {
     next_start = start + (per_page - sticky.length)
 
     way.set "messages", current
+    
+    if wall.message_color
+      $("html body div#body div.messages div div.message-box div.right div.content").css("color","#{wall.message_color}")
+    if wall.message_background_color
+      $("html body div#body div.messages div div.message-box ").css("background-color","#{wall.message_background_color}")
 
     if normal[next_start]
       setTimeout ->
