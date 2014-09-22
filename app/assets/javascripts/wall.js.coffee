@@ -39,9 +39,11 @@ window.main = {
     way.set "messages", current
     
     if wall.message_color
-      $("html body div#body div.messages div div.message-box div.right div.content").css("color","#{wall.message_color}")
+      $(".message-box .content").css("color",wall.message_color)
     if wall.message_background_color
-      $("html body div#body div.messages div div.message-box ").css("background-color","#{wall.message_background_color}")
+      $(".message-box").css("background-color",wall.message_background_color)
+    if wall.title_color
+      $(".page-header h1").css("color", wall.title_color)
 
     this.updateClass()
 
