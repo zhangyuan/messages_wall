@@ -5,12 +5,21 @@
   .form-group
     label 背景图片
     = f.file_field :background_image, class: 'form-control'
+    = f.hidden_field :background_image_cache
+    - if f.object.background_image.present?
+      .image= image_tag f.object.background_image_url
   .form-group
     label 二维码图片
     = f.file_field :qrcode, class: 'form-control'
+    = f.hidden_field :qrcode_cache
+    - if f.object.qrcode.present?
+      .image = image_tag f.object.qrcode_url
   .form-group
     label LOGO
     = f.file_field :logo, class: 'form-control'
+    = f.hidden_field :logo_cache
+    - if f.object.logo.present?
+      .image= image_tag f.object.logo_url
   .form-group
     label 上墙时长
     = f.text_field :duration, class: 'form-control'
