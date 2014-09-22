@@ -43,6 +43,8 @@ window.main = {
     if wall.message_background_color
       $("html body div#body div.messages div div.message-box ").css("background-color","#{wall.message_background_color}")
 
+    this.updateClass()
+
     if normal[next_start]
       setTimeout ->
         main.draw(start + per_page)
@@ -51,6 +53,15 @@ window.main = {
       setTimeout ->
         main.load(wall_id)
       , INTERVAL
+  updateClass: ->
+    $(".message-box .content").each ->
+      length = $(this).text().trim().length
+      if length < 10
+        $(this).addClass 'text-large'
+      else if length > 10 && length < 40
+        $(this).addClass 'text-medium'
+      else
+        $(this).addClass 'text-small'
 
 }
 

@@ -30,7 +30,7 @@ class WallsController < ApplicationController
   def show
     @wall = Wall.find(params[:id])
     set_page_title @wall.title
-    @messages = @wall.messages.published.normal
+    @messages = @wall.messages.published.normal.order("id desc")
     @sticky_messages = @wall.messages.sticky.order("id desc").limit(1)
     if @wall.duration > 0
       @sticky_messages = @sticky_messages.where("created_at > ?", @wall.duration.minutes.ago)
