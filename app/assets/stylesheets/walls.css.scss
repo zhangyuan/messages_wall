@@ -3,12 +3,20 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "bootstrap-colorpicker";
+@import "compass";
 
 table.walls {
   tr img {
     max-width: 100%;
     height: auto;
   }
+}
+
+form .message-sample {
+  padding: 10px;
+  @include opacity(0.9);
+  @include border-radius(5px);
 }
 
 form .image img {

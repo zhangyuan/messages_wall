@@ -5,7 +5,7 @@ class WallsController < ApplicationController
   require_signed_in only: [:new, :create, :index, :edit, :update]
 
   def new
-    @wall = Wall.new
+    @wall = Wall.new(message_color: "#363A42", message_background_color: "#EFF4F7")
   end
 
   def create

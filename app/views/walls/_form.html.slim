@@ -24,11 +24,28 @@
     label 上墙时长
     = f.text_field :duration, class: 'form-control'
   .form-group
+    .message-sample 消息文本颜色预览
+  .form-group
     label 消息颜色
-    = f.text_field :message_color, class: "form-control"
+    = f.text_field :message_color, class: "form-control colorpicker-text", readonly: true
   .form-group
     label 消息背景颜色
-    = f.text_field :message_background_color, class: "form-control"
+    = f.text_field :message_background_color, class: "form-control colorpicker-bg", readonly: true
 
   .form-group
     = f.submit "提交", class: "btn btn-default"
+
+javascript:
+  $(document).ready(function(){
+    $(".message-sample").css("color", $(".colorpicker-text").val());
+    $(".message-sample").css("background-color", $(".colorpicker-bg").val());
+
+    $('.colorpicker-bg').colorpicker().on('changeColor', function(ev) {
+      $(".message-sample").css("background-color", ev.color.toHex())
+    });
+
+    $('.colorpicker-text').colorpicker().on('changeColor', function(ev) {
+      $(".message-sample").css("color", ev.color.toHex())
+    });
+  });
+ 
