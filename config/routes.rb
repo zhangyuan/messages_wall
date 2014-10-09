@@ -10,6 +10,10 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create]
 
   resources :walls do
+    member do
+      get 'export'
+    end
+
     collection do
       post "retrieve"
     end

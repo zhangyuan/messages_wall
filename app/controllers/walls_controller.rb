@@ -1,8 +1,9 @@
+# encoding: utf-8
 class WallsController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:retrieve]
   cors_set_access_control_headers only: [:retrieve]
 
-  require_signed_in only: [:new, :create, :index, :edit, :update]
+  require_signed_in only: [:new, :create, :index, :edit, :update, :export]
 
   def new
     @wall = Wall.new(message_color: "#363A42", message_background_color: "#EFF4F7")
@@ -40,6 +41,16 @@ class WallsController < ApplicationController
     end
     @sticky_messages = @sticky_messages.to_a.select {|m| m.published? }
     render layout: 'wall'
+  end
+
+  def export
+    wall = current_account.walls.find(params[:id])
+
+    file = Tempfile.new(['export', '.xls'])
+    file.binmode
+    wall.to_excel(file)
+
+    send_file file, type: 'application/msexcel', filename: "#{wall.title}.xls"
   end
 
   def edit
