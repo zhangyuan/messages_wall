@@ -8,7 +8,7 @@ wall_id = null
 wall = {}
 SIZE = 5
 per_page = SIZE
-INTERVAL = 3000
+INTERVAL = 6000
 
 window.main = {
   initialize : (id)->
