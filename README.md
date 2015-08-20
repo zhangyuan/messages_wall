@@ -26,7 +26,10 @@ aptitude install mysql-server
  
 ## Setup the application infrastructure on the server
 * Switch to user `deploy`
-* Install rbenv by user `deploy` ( see https://github.com/fesplugas/rbenv-installer )
+* Install rbenv by user `deploy` and `bundler` ( see https://github.com/fesplugas/rbenv-installer). The following installing script install rbenv, ruby and bundler:
+```
+curl -L https://raw.githubusercontent.com/zhangyuan/deploy/master/ruby/install | bash
+```
 * create directory by execute `mkdir ~/apps/wechat/wechat_helper`
  
 
